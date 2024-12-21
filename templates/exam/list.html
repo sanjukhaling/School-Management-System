@@ -1,0 +1,100 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container-fluid pr-4">
+    <div class="row mx-0">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold text-primary">Exam List</h2>
+                <a href="{% url 'smsapp:exam_create' %}" class="btn btn-info">
+                    <i class="fas fa-plus-circle"></i> Add Exam
+                </a>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Exam Details</h5>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover table-striped table-responsive-md mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">SN</th>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Exam Type</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if exam_list %}
+                                {% for exam in exam_list %}
+                                    <tr>
+                                        <th scope="row">{{ forloop.counter }}</th>
+                                        <td>
+                                            <a href="{% url 'smsapp:exam_detail' exam.id %}" class="text-decoration-none text-info">
+                                                {{ exam.subject }}
+                                            </a>
+                                        </td>
+                                        <td>{{ exam.date }} hour</td>
+                                        <td>{{ exam.exam_type }}</td>
+                                        <td>{{ exam.grade }}</td>
+                                        <td>{{ exam.duration }}</td>
+                                        <td>{{ exam.description }}</td>
+                                        <td>
+                                            <a href="{% url 'smsapp:exam_update' exam.id %}" class="btn btn-sm btn-info">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <a href="{% url 'smsapp:exam_delete' exam.id %}" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center text-muted">No exams found.</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            {% if exam_list.has_other_pages %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if exam_list.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1">&laquo; First</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ exam_list.previous_page_number }}">&lsaquo; Previous</a>
+                            </li>
+                        {% endif %}
+                        {% for n in total_page_list %}
+                            <li class="page-item {% if exam_list.number == n %}active{% endif %}">
+                                <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if exam_list.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ exam_list.next_page_number }}">Next &rsaquo;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ last_page }}">Last &raquo;</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

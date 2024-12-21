@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Grade Form</h4>
+        </div>
+        <div class="card-body">
+            <!-- Display error messages if any -->
+            {% if msg_errors %}
+                <div class="alert alert-danger">{{ msg_errors }}</div>
+            {% endif %}
+
+            <!-- Form begins -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-row mb-3">
+                    <!-- Name Field -->
+                    <div class="form-group col-md-6">
+                        <label for="name" class="fw-bold">Name</label>
+                        {{ forms.name }}
+                    </div>
+
+                  
+                </div>
+
+
+                <!-- Address Field -->
+                <div class="form-group mb-3">
+                    <label for="address" class="fw-bold">Description</label>
+                    {{ forms.description }}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

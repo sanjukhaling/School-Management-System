@@ -1,0 +1,136 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18">Student Details</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="pt-3">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-8">
+                                        <div>
+                                            <div class="text-center">
+                                                <div class="mb-4">
+                                                    <a href="#" class="badge badge-light font-size-12">
+                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted mr-1"></i> Student
+                                                    </a>
+                                                </div>
+                                                <h4>Student Name: {{ student_detail.name }}</h4>
+                                                <p class="text-muted mb-4"><i class="mdi mdi-calendar mr-1"></i><b>Roll Number:</b>  {{ student_detail.roll_number }}</p>
+                                            </div>
+
+                                            <hr>
+                                            <div class="text-center">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div>
+                                                            <p class="text-muted mb-2">Categories</p>
+                                                            <h5 class="font-size-15">{{ student_detail.grade }}</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <p class="text-muted mb-2">Brand</p>
+                                                            <h5 class="font-size-15">{{ student_detail.date_of_birth }}</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <p class="text-muted mb-2">Gender</p>
+                                                            <h5 class="font-size-15">{{ student_detail.gender }}</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <p class="text-muted mb-2">Email</p>
+                                                            <h5 class="font-size-15">{{ student_detail.email }}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="my-5">
+                                                <img src="{{ student_detail.profile_picture.url }}" alt="" class="img-thumbnail mx-auto d-block">
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="mt-4">
+                                                <div class="text-muted font-size-14">
+                                                    <blockquote class="p-4 border-light border rounded mb-4">
+                                                        <div class="d-flex">
+                                                            <div class="mr-3">
+                                                                <i class="bx bxs-quote-alt-left text-dark font-size-24"></i>
+                                                            </div>
+                                                            
+                                                            <div>
+                                                                <p class="mb-0"><b>Student Phone: </b>{{ student_detail.phone }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="mb-0"><b>Student Address: </b>{{ student_detail.address }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="mb-0"><b>Student admission_date: </b>{{ student_detail.admission_date }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="mb-0"><b>Student Parent Name: </b>{{ student_detail.parent_name }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="mb-0"><b>Student Parent Contact: </b>{{ student_detail.parent_contact }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="mb-0"><b>Student is_active: </b>{{ student_detail.is_active }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </blockquote>
+                                                </div>
+
+                                                <hr>
+
+                                            </div>
+                                            <div>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item active">{{exam_detail.student.name}} Exam</li>
+                                                    <li class="list-group-item"><b>Subject: </b>{{exam_detail.subject.name}}</li>
+                                                    <li class="list-group-item"><b>Date: </b>{{exam_detail.date}}</li>
+                                                    <li class="list-group-item"><b>Exam Type: </b>{{exam_detail.exam_type}}</li>
+                                                    <li class="list-group-item"><b>Grade: </b>{{exam_detail.grade}}</li>
+                                                    <li class="list-group-item"><b>Duration: </b>{{exam_detail.duration}}</li>
+                                                    <li class="list-group-item"><b>Description: </b>{{exam_detail.description}}</li>
+                                                  </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+</div>
+<!-- end main content-->
+{% endblock %}

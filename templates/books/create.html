@@ -1,0 +1,76 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Books Form</h4>
+        </div>
+        <div class="card-body">
+            <!-- Display error messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                            <li><strong>{{ field }}:</strong> {{ errors|join:", " }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <!-- Form begins -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row mb-3">
+                    <div class="form-group col-md-6">
+                        <label for="grade" class="fw-bold">Grade</label>
+                        {{ form.grade }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="subject" class="fw-bold">Subject</label>
+                        {{ form.subject }}
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="title" class="fw-bold">Title</label>
+                    {{ form.title }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="author" class="fw-bold">Author</label>
+                    {{ form.author }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="publication_date" class="fw-bold">Publication Date</label>
+                    {{ form.publication_date }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="publisher" class="fw-bold">Publisher</label>
+                    {{ form.publisher }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="page_count" class="fw-bold">Page Count</label>
+                    {{ form.page_count }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="language" class="fw-bold">Language</label>
+                    {{ form.language }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="available_copies" class="fw-bold">Available Copies</label>
+                    {{ form.available_copies }}
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

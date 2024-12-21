@@ -1,0 +1,85 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container-fluid pr-4">
+    <div class="row mx-0">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Add New Result</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        <!-- Student -->
+                        <div class="mb-3">
+                            <label for="student" class="form-label">Student</label>
+                            <select name="student" id="student" class="form-select" required>
+                                <option value="" selected disabled>Select Student</option>
+                                {% for student in students %}
+                                    <option value="{{ student.id }}">{{ student.name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.student.errors }}
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select name="subject" id="subject" class="form-select" required>
+                                <option value="" selected disabled>Select Subject</option>
+                                {% for subject in subjects %}
+                                    <option value="{{ subject.id }}">{{ subject.name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.subject.errors }}
+                        </div>
+
+                        <!-- Exam -->
+                        <div class="mb-3">
+                            <label for="exam" class="form-label">Exam</label>
+                            <select name="exam" id="exam" class="form-select" required>
+                                <option value="" selected disabled>Select Exam Type</option>
+                                {% for exam_id, exam_type in exam_types %}
+                                    <option value="{{ exam_id }}">{{ exam_type }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.exam.errors }}
+                        </div>
+
+                        <!-- Date -->
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" name="date" id="date" class="form-control" required>
+                            {{ form.date.errors }}
+                        </div>
+
+                        <!-- Score -->
+                        <div class="mb-3">
+                            <label for="score" class="form-label">Score</label>
+                            <input type="number" name="score" id="score" class="form-control" min="0" required>
+                            {{ form.score.errors }}
+                        </div>
+
+                        <!-- Total Marks -->
+                        <div class="mb-3">
+                            <label for="total_marks" class="form-label">Total Marks</label>
+                            <input type="number" name="total_marks" id="total_marks" class="form-control" min="0" required>
+                            {{ form.total_marks.errors }}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">Save Result</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Exam Form</h4>
+        </div>
+        <div class="card-body">
+            <!-- Display error messages if any -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} mb-3">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- Form begins -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-row mb-3">
+                    <!-- Subject Field -->
+                    <div class="form-group col-md-6">
+                        <label for="id_subject" class="fw-bold">Subject</label>
+                        {{ form.subject }}
+                        {% if form.subject.errors %}
+                            <div class="text-danger small">{{ form.subject.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Date Field -->
+                    <div class="form-group col-md-6">
+                        <label for="id_date" class="fw-bold">Date</label>
+                        {{ form.date }}
+                        {% if form.date.errors %}
+                            <div class="text-danger small">{{ form.date.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Exam Type Field -->
+                <div class="form-group mb-3">
+                    <label for="id_exam_type" class="fw-bold">Exam Type</label>
+                    {{ form.exam_type }}
+                    {% if form.exam_type.errors %}
+                        <div class="text-danger small">{{ form.exam_type.errors|striptags }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Grade Field -->
+                <div class="form-group mb-3">
+                    <label for="id_grade" class="fw-bold">Grade</label>
+                    {{ form.grade }}
+                    {% if form.grade.errors %}
+                        <div class="text-danger small">{{ form.grade.errors|striptags }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Duration Field -->
+                <div class="form-group mb-3">
+                    <label for="id_duration" class="fw-bold">Duration</label>
+                    {{ form.duration }}
+                    {% if form.duration.errors %}
+                        <div class="text-danger small">{{ form.duration.errors|striptags }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Description Field -->
+                <div class="form-group mb-3">
+                    <label for="id_description" class="fw-bold">Description</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="text-danger small">{{ form.description.errors|striptags }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Staff Form</h4>
+        </div>
+        <div class="card-body">
+            <!-- Display error messages if any -->
+            {% if msg_errors %}
+                <div class="alert alert-danger">{{ msg_errors }}</div>
+            {% endif %}
+
+            <!-- Form begins -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-row mb-3">
+                    <!-- Name Field -->
+                    <div class="form-group col-md-6">
+                        <label for="name" class="fw-bold">Name</label>
+                        {{ form.name }}
+                    </div>
+
+                    <!-- Role Field -->
+                    <div class="form-group col-md-6">
+                        <label for="role" class="fw-bold">Roll Number</label>
+                        {{ form.roll_number }}
+                    </div>
+                </div>
+
+                <!-- Subject Field -->
+                <div class="form-group mb-3">
+                    <label for="subject" class="fw-bold">Grade</label>
+                    {{ form.grade }}
+                </div>
+
+                <!-- Phone Field -->
+                <div class="form-group mb-3">
+                    <label for="phone" class="fw-bold">Date of Birth</label>
+                    {{ form.date_of_birth }}
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group mb-3">
+                    <label for="email" class="fw-bold">Gender</label>
+                    {{ form.gender }}
+                </div>
+
+                <!-- Address Field -->
+                <div class="form-group mb-3">
+                    <label for="address" class="fw-bold">Email</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="address" class="fw-bold">Phone</label>
+                    {{ form.phone }}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="address" class="fw-bold">Address</label>
+                    {{ form.address }}
+                </div>
+
+                <div class="form-row mb-3">
+                    <!-- Date of Birth Field -->
+                    <div class="form-group col-md-6">
+                        <label for="date_of_birth" class="fw-bold">Admission Date</label>
+                        {{ form.admission_date }}
+                    </div>
+
+                </div>
+
+                <!-- Profile Picture Field -->
+                <div class="form-group mb-3">
+                    <label for="profile_picture" class="fw-bold">Profile Picture</label>
+                    {{ form.profile_picture }}
+                </div>
+
+                <div class="form-row mb-3">
+                    <!-- Department Field -->
+                                        <!-- Qualification Field -->
+                    <div class="form-group col-md-6">
+                        <label for="qualification" class="fw-bold">Parent Name</label>
+                        {{ forms.parent_name }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="qualification" class="fw-bold">Parent Contact</label>
+                        {{ forms.parent_contact }}
+                    </div>
+                </div>
+
+                <!-- Is Active Field -->
+                <div class="form-group form-check mb-3">
+                    <label class="form-check-label fw-bold" for="is_active">
+                        Active
+                        {{ forms.is_active }}
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

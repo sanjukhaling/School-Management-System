@@ -1,0 +1,126 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block mainblock %}
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18">Staff Details</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="pt-3">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-8">
+                                        <div>
+                                            <div class="text-center">
+                                                <div class="mb-4">
+                                                    <a href="#" class="badge badge-light font-size-12">
+                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted mr-1"></i> Staff
+                                                    </a>
+                                                </div>
+                                                <h4>Staff Name: {{ staff_detail.name }}</h4>
+                                                <p class="text-muted mb-4"><i class="mdi mdi-calendar mr-1"></i><b> Staff Role:</b>  {{ staff_detail.role }}</p>
+                                            </div>
+
+                                            <hr>
+                                            <div class="text-center">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div>
+                                                            <p class="text-muted mb-2">Subject</p>
+                                                            <h5 class="font-size-15">{{ staff_detail.subject }}</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <p class="text-muted mb-2">Phone</p>
+                                                            <h5 class="font-size-15">{{ staff_detail.phone }}</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <p class="text-muted mb-2">Email</p>
+                                                            <h5 class="font-size-15">{{ staff_detail.email }}</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <p class="text-muted mb-2">Address</p>
+                                                            <h5 class="font-size-15">{{ staff_detail.address }}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="my-5">
+                                                <img src="{{ staff_detail.profile_picture.url }}" alt="" class="img-thumbnail mx-auto d-block">
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="mt-4">
+                                                <div class="text-muted font-size-14">
+                                                    <blockquote class="p-4 border-light border rounded mb-4">
+                                                        <div class="d-flex">
+                                                            <div class="mr-3">
+                                                                <i class="bx bxs-quote-alt-left text-dark font-size-24"></i>
+                                                            </div>
+                                                            
+                                                            <div>
+                                                                <b>Staff Date of Birth: </b>
+                                                                <p class="mb-0">
+                                                                    {{ staff_detail.date_of_birth }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <b>Staff Hire Date: </b>
+                                                                <p class="mb-0">
+                                                                    {{ staff_detail.hire_date }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <b>Staff Qualification : </b>
+                                                                <p class="mb-0">
+                                                                    {{ staff_detail.qualifications }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <b>Staff Active: </b>
+                                                                <p class="mb-0">
+                                                                    {{ staff_detail.is_active }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </blockquote>
+                                                </div>
+
+                                                <hr>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+</div>
+<!-- end main content-->
+{% endblock %}
